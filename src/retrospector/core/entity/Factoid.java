@@ -1,7 +1,7 @@
 
 package retrospector.core.entity;
 
-public class Factoid {
+public class Factoid implements Entity{
     private String title;
     private String content;
     private Integer id;

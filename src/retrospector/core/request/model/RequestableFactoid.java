@@ -1,7 +1,7 @@
 
 package retrospector.core.request.model;
 
-public class RequestableFactoid {
+public class RequestableFactoid implements RequestableEntity{
     private String title;
     private String content;
     private Integer id;

@@ -4,7 +4,7 @@ package retrospector.core.entity;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Media {
+public class Media implements Entity{
 
     public static enum Type{MINISERIES,SERIES,SINGLE,WISHLIST}
     

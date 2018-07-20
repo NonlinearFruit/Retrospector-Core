@@ -3,7 +3,7 @@ package retrospector.core.request.model;
 
 import java.time.LocalDate;
 
-public class RequestableReview {
+public class RequestableReview implements RequestableEntity{
     
     private LocalDate date;
     private String user;

@@ -3,7 +3,7 @@ package retrospector.core.entity;
 
 import java.time.LocalDate;
 
-public class Review {
+public class Review implements Entity{
     
     private LocalDate date;
     private String user;

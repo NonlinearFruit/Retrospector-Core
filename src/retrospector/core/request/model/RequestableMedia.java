@@ -3,9 +3,8 @@ package retrospector.core.request.model;
 
 import java.util.ArrayList;
 import java.util.List;
-import retrospector.core.entity.Media;
 
-public class RequestableMedia {
+public class RequestableMedia implements RequestableEntity{
 
     public static enum RequestableType{MINISERIES,SERIES,SINGLE,WISHLIST}
     

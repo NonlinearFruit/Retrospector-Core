@@ -1,64 +1,41 @@
 
 package retrospector.core.interactor;
 
-import retrospector.core.boundry.Interactor;
 import retrospector.core.boundry.Presenter;
-import retrospector.core.boundry.Request;
 import retrospector.core.datagateway.DataGateway;
 import retrospector.core.entity.Factoid;
 import retrospector.core.request.model.EntityConverter;
 import retrospector.core.request.model.RequestableFactoid;
 
-public class CrudFactoidUseCase implements Interactor{
+public class CrudFactoidUseCase extends CrudUseCase<CrudFactoidRequest> {
 
-    private CrudFactoidRequest request;
-    private DataGateway dataGateway;
-    private Presenter presenter;
-    
     public CrudFactoidUseCase(DataGateway dataGateway, Presenter presenter) {
-        this.dataGateway = dataGateway;
-        this.presenter = presenter;
-    }
-    
-    @Override
-    public void execute(Request request) {
-        this.request = (CrudFactoidRequest) request;
-        switch(this.request.getCrud()){
-            case Create:
-                createFactoid();
-                break;
-            default:
-            case Read:
-                readFactoid();
-                break;
-            case Update:
-                updateFactoid();
-                break;
-            case Delete:
-                deleteFactoid();
-                break;
-        }
+        super(dataGateway, presenter);
     }
 
-    private void createFactoid() {
-        Factoid factoid = dataGateway.addFactoid(convert(request.getFactoid()));
+    @Override
+    protected void create() {
+        Factoid factoid = dataGateway.addFactoid(convert(request.getRequestable()));
         presenter.factoidAdded(convert(factoid));
     }
 
-    private void readFactoid() {
-        Factoid factoid = dataGateway.getFactoid(request.getFactoidId());
+    @Override
+    protected void read() {
+        Factoid factoid = dataGateway.getFactoid(request.getRequestableId());
         presenter.factoidRetrieved(convert(factoid));
     }
 
-    private void updateFactoid() {
-        RequestableFactoid requestable = request.getFactoid();
+    @Override
+    protected void update() {
+        RequestableFactoid requestable = request.getRequestable();
         Factoid factoid = dataGateway.updateFactoid(convert(requestable));
         presenter.factoidUpdated(convert(factoid));
     }
 
-    private void deleteFactoid() {
-        int factoidId = request.getFactoidId();
-        dataGateway.deleteFactoid(request.getFactoidId());
+    @Override
+    protected void delete() {
+        int factoidId = request.getRequestableId();
+        dataGateway.deleteFactoid(request.getRequestableId());
         presenter.factoidDeleted(factoidId);
     }
     
