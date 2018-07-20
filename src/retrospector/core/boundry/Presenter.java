@@ -19,4 +19,8 @@ public interface Presenter {
     public void reviewRetrieved(RequestableReview requestableReview);
 
     public void reviewDeleted(Integer id);
+
+    public void mediaRetrieved(RequestableMedia convert);
+
+    public void mediaUpdated(RequestableMedia convert);
 }
