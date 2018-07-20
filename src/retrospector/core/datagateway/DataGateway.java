@@ -4,6 +4,7 @@ package retrospector.core.datagateway;
 import retrospector.core.entity.Media;
 import retrospector.core.entity.Review;
 import retrospector.core.entity.Factoid;
+import retrospector.core.request.model.RequestableReview;
 
 public interface DataGateway {
     
@@ -21,4 +22,6 @@ public interface DataGateway {
     public Factoid getFactoid(int factoidId);
     public Factoid updateFactoid(Factoid factoid);
     public void deleteFactoid(int factoidId);
+
+    public void reviewRetrieved(RequestableReview requestableReview);
 }

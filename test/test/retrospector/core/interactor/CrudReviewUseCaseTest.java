@@ -40,8 +40,8 @@ public class CrudReviewUseCaseTest {
         requestableReview = EntityConverter.convert(review);
         
         when(dataGateway.addReview(review)).thenAnswer(i -> review);
-//        when(dataGateway.getReview(review.getId())).thenAnswer(i -> review);
-//        when(dataGateway.updateReview(review)).thenAnswer(i -> review);
+        when(dataGateway.getReview(review.getId())).thenAnswer(i -> review);
+        when(dataGateway.updateReview(review)).thenAnswer(i -> review);
     }
 
     @Test
@@ -52,6 +52,15 @@ public class CrudReviewUseCaseTest {
         
         verify(dataGateway, times(1)).addReview(review);
     }
+    
+    @Test
+    public void createReview_CallsPresenter() {
+        Request request = new CrudReviewRequest(Crud.Create, requestableReview);
+        
+        useCase.execute(request);
+        
+        verify(presenter, times(1)).reviewAdded(requestableReview);
+    }
 
     @Test
     public void updateReview_CallsDataGateway() {
@@ -60,6 +69,50 @@ public class CrudReviewUseCaseTest {
         useCase.execute(request);
         
         verify(dataGateway, times(1)).updateReview(review);
+    }    
+    
+    @Test
+    public void updateReview_CallsPresenter() {
+        Request request = new CrudReviewRequest(Crud.Update, requestableReview);
+        
+        useCase.execute(request);
+        
+        verify(presenter, times(1)).reviewUpdated(requestableReview);
     }
     
+    @Test
+    public void getReview_CallsDataGateway() {
+        Request request = new CrudReviewRequest(Crud.Read, requestableReview.getId());
+        
+        useCase.execute(request);
+        
+        verify(dataGateway, times(1)).getReview(requestableReview.getId());
+    }
+    
+    @Test
+    public void getReview_CallsPresenter() {
+        Request request = new CrudReviewRequest(Crud.Read, requestableReview.getId());
+        
+        useCase.execute(request);
+        
+        verify(presenter, times(1)).reviewRetrieved(requestableReview);
+    }
+    
+    @Test
+    public void deleteReview_CallsDataGateway() {
+        Request request = new CrudReviewRequest(Crud.Delete, requestableReview.getId());
+        
+        useCase.execute(request);
+        
+        verify(dataGateway, times(1)).deleteReview(requestableReview.getId());
+    }
+    
+    @Test
+    public void deleteReview_CallsPresenter() {
+        Request request = new CrudReviewRequest(Crud.Delete, requestableReview.getId());
+        
+        useCase.execute(request);
+        
+        verify(presenter, times(1)).reviewDeleted(requestableReview.getId());
+    }
 }
