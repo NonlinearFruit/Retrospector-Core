@@ -1,62 +1,40 @@
 
 package retrospector.core.interactor;
 
-import retrospector.core.boundry.Interactor;
 import retrospector.core.boundry.Presenter;
-import retrospector.core.boundry.Request;
 import retrospector.core.datagateway.DataGateway;
 import retrospector.core.entity.Review;
 import retrospector.core.request.model.EntityConverter;
 import retrospector.core.request.model.RequestableReview;
 
-public class CrudReviewUseCase implements Interactor{
+public class CrudReviewUseCase extends CrudUseCase<CrudReviewRequest> {
 
-    private DataGateway dataGateway;
-    private Presenter presenter;
-    private CrudReviewRequest request;
-    
     public CrudReviewUseCase(DataGateway dataGateway, Presenter presenter) {
-        this.dataGateway = dataGateway;
-        this.presenter = presenter;
+        super(dataGateway, presenter);
     }
 
     @Override
-    public void execute(Request request) {
-        this.request = (CrudReviewRequest) request;
-        switch(this.request.getCrud()) {
-            case Create:
-                createReview();
-                break;
-            case Read:
-                readReview();
-                break;
-            case Update:
-                updateReview();
-                break;
-            case Delete:
-                deleteReview();
-                break;
-        }
-    }
-
-    private void createReview() {
-        Review review = dataGateway.addReview(convert(request.getReview()));
+    public void create() {
+        Review review = dataGateway.addReview(convert(request.getRequestable()));
         presenter.reviewAdded(convert(review));
     }
     
-    private void readReview() {
-        Review review = dataGateway.getReview(request.getReviewId());
+    @Override
+    public void read() {
+        Review review = dataGateway.getReview(request.getRequestableId());
         presenter.reviewRetrieved(convert(review));
     }
 
-    private void updateReview() {
-        Review review = dataGateway.updateReview(convert(request.getReview()));
+    @Override
+    public void update() {
+        Review review = dataGateway.updateReview(convert(request.getRequestable()));
         presenter.reviewUpdated(convert(review));
     }
 
-    private void deleteReview() {
-        dataGateway.deleteReview(request.getReviewId());
-        presenter.reviewDeleted(request.getReviewId());
+    @Override
+    public void delete() {
+        dataGateway.deleteReview(request.getRequestableId());
+        presenter.reviewDeleted(request.getRequestableId());
     }
     
     private Review convert(RequestableReview review) {

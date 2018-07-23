@@ -14,7 +14,7 @@ import retrospector.core.boundry.Presenter;
 import retrospector.core.boundry.Request;
 import retrospector.core.datagateway.DataGateway;
 import retrospector.core.entity.Review;
-import retrospector.core.interactor.CrudReviewRequest.Crud;
+import retrospector.core.interactor.CrudRequest.Crud;
 import retrospector.core.interactor.CrudReviewRequest;
 import retrospector.core.interactor.CrudReviewUseCase;
 import retrospector.core.request.model.EntityConverter;
