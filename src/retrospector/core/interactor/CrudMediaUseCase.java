@@ -41,24 +41,24 @@ public class CrudMediaUseCase implements Interactor{
     }
 
     private void createMedia() {
-        Media media = dataGateway.addMedia(convert(request.getMedia()));
+        Media media = dataGateway.addMedia(convert(request.getRequestable()));
         presenter.mediaAdded(convert(media));
     }
 
     private void readMedia() {
-        Media media = dataGateway.getMedia(request.getMediaId());
+        Media media = dataGateway.getMedia(request.getRequestableId());
         presenter.mediaRetrieved(convert(media));
     }
 
     private void updateMedia() {
-        RequestableMedia requestable = request.getMedia();
+        RequestableMedia requestable = request.getRequestable();
         Media media = dataGateway.updateMedia(convert(requestable));
         presenter.mediaUpdated(convert(media));
     }
 
     private void deleteMedia() {
-        int mediaId = request.getMediaId();
-        dataGateway.deleteMedia(request.getMediaId());
+        int mediaId = request.getRequestableId();
+        dataGateway.deleteMedia(request.getRequestableId());
         presenter.mediaDeleted(mediaId);
     }
     

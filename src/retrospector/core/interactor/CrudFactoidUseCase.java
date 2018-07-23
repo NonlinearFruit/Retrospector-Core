@@ -35,7 +35,7 @@ public class CrudFactoidUseCase extends CrudUseCase<CrudFactoidRequest> {
     @Override
     protected void delete() {
         int factoidId = request.getRequestableId();
-        dataGateway.deleteFactoid(request.getRequestableId());
+        dataGateway.deleteFactoid(factoidId);
         presenter.factoidDeleted(factoidId);
     }
     

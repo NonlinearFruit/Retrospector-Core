@@ -1,11 +1,9 @@
 
 package test.retrospector.core.interactor;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import static org.mockito.ArgumentMatchers.any;
 import org.mockito.Mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -17,8 +15,8 @@ import retrospector.core.boundry.Request;
 import retrospector.core.datagateway.DataGateway;
 import retrospector.core.entity.Media;
 import retrospector.core.interactor.CrudMediaRequest;
-import retrospector.core.interactor.CrudMediaRequest.Crud;
 import retrospector.core.interactor.CrudMediaUseCase;
+import retrospector.core.interactor.CrudRequest.Crud;
 import retrospector.core.request.model.EntityConverter;
 import retrospector.core.request.model.RequestableMedia;
 import test.retrospector.core.utility.TestEntity;
