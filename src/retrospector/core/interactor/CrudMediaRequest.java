@@ -1,4 +1,3 @@
-
 package retrospector.core.interactor;
 
 import retrospector.core.request.model.RequestableMedia;
