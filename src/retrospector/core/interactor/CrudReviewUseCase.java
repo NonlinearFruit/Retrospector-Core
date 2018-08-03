@@ -44,4 +44,14 @@ public class CrudReviewUseCase extends CrudUseCase<CrudReviewRequest> {
     private RequestableReview convert(Review review) {
         return EntityConverter.convert(review);
     }
+
+    @Override
+    protected void readAll() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    protected void readAllById() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

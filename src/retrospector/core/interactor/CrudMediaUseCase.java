@@ -46,4 +46,14 @@ public class CrudMediaUseCase extends CrudUseCase<CrudMediaRequest>{
     private RequestableMedia convert(Media media) {
         return EntityConverter.convert(media);
     }
+
+    @Override
+    protected void readAll() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    protected void readAllById() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

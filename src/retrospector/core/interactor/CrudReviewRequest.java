@@ -12,4 +12,8 @@ public class CrudReviewRequest extends CrudRequest<RequestableReview>{
     public CrudReviewRequest(Crud crud, int reviewId) {
         super(crud, reviewId);
     }
+    
+    public CrudReviewRequest(Crud crud) {
+        super(crud);
+    }
 }

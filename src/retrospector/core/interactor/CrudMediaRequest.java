@@ -11,4 +11,8 @@ public class CrudMediaRequest extends CrudRequest<RequestableMedia>{
     public CrudMediaRequest(Crud crud, int mediaId) {
         super(crud, mediaId);
     }
+    
+    public CrudMediaRequest(Crud crud) {
+        super(crud);
+    }
 }

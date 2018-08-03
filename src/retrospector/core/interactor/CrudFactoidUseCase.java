@@ -46,4 +46,14 @@ public class CrudFactoidUseCase extends CrudUseCase<CrudFactoidRequest> {
     private RequestableFactoid convert(Factoid factoid) {
         return EntityConverter.convert(factoid);
     }
+
+    @Override
+    protected void readAll() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    protected void readAllById() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

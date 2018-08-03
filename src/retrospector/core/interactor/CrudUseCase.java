@@ -34,6 +34,12 @@ public abstract class CrudUseCase<T extends CrudRequest> implements Interactor{
             case Delete:
                 delete();
                 break;
+            case ReadAll:
+                readAll();
+                break;
+            case ReadAllById:
+                readAllById();
+                break;
         }
     }
 
@@ -44,4 +50,8 @@ public abstract class CrudUseCase<T extends CrudRequest> implements Interactor{
     protected abstract  void update();
 
     protected abstract  void delete();
+    
+    protected abstract  void readAll();
+    
+    protected abstract  void readAllById();
 }

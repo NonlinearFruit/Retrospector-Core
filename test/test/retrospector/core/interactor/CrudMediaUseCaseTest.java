@@ -39,9 +39,9 @@ public class CrudMediaUseCaseTest {
         media = TestEntity.getMedia();
         requestableMedia = EntityConverter.convert(media);
         
-        when(dataGateway.addMedia(media)).thenAnswer(i -> media);
-        when(dataGateway.getMedia(media.getId())).thenAnswer(i -> media);
-        when(dataGateway.updateMedia(media)).thenAnswer(i -> media);
+        when(dataGateway.addMedia(media)).thenReturn(media);
+        when(dataGateway.getMedia(media.getId())).thenReturn(media);
+        when(dataGateway.updateMedia(media)).thenReturn(media);
     }
     
     @Test

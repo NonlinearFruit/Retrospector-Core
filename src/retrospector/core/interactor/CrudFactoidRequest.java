@@ -12,4 +12,8 @@ public class CrudFactoidRequest extends CrudRequest<RequestableFactoid>{
     public CrudFactoidRequest(Crud crud, int factoidId) {
         super(crud, factoidId);
     }
+    
+    public CrudFactoidRequest(Crud crud) {
+        super(crud);
+    }
 }
