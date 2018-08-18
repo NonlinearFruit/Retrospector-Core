@@ -17,16 +17,14 @@ public abstract class CrudRequest<T extends RequestableEntity> implements Reques
     }
     
     public CrudRequest(Crud crud, Integer entityId) {
-        this.crud = crud;
+        this(crud);
         this.entityId = entityId;
     }
     
-    public CrudRequest(Crud readAll) {
-        if (readAll != Crud.ReadAll)
-            throw new IllegalArgumentException();
-        this.crud = readAll;
+    public CrudRequest(Crud crud) {
+        this.crud = crud;
     }
-
+    
     public Crud getCrud() {
         return crud;
     }
