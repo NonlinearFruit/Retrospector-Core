@@ -1,9 +1,14 @@
 
 package test.retrospector.core.interactor;
 
+import java.util.Arrays;
+import java.util.List;
+import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.ArgumentCaptor;
+import org.mockito.Captor;
 import org.mockito.Mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -118,5 +123,28 @@ public class CrudMediaUseCaseTest {
         useCase.execute(request);
         
         verify(presenter, times(1)).mediaDeleted(mediaId);
+    }
+    
+    @Test
+    public void readAllMedia_CallsDataGateway() {
+        Request request = new CrudMediaRequest(Crud.ReadAll);
+        
+        useCase.execute(request);
+        
+        verify(dataGateway, times(1)).getMedia();
+    }
+    
+    @Test
+    public void readAllMedia_CallsPresenter() {
+        ArgumentCaptor<List<RequestableMedia>> captor = ArgumentCaptor.forClass(List.class);
+        List<Media> list = Arrays.asList(media);
+        when(dataGateway.getMedia()).thenReturn(list);
+        Request request = new CrudMediaRequest(Crud.ReadAll);
+        
+        useCase.execute(request);
+        
+        verify(presenter, times(1)).mediaRetrievedAll(captor.capture());
+        assertEquals(list.size(), captor.getValue().size());
+        assertEquals(requestableMedia, captor.getValue().get(0));
     }
 }

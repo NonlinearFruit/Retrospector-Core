@@ -1,6 +1,9 @@
 
 package retrospector.core.interactor;
 
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import retrospector.core.boundry.Presenter;
 import retrospector.core.datagateway.DataGateway;
 import retrospector.core.entity.Media;
@@ -38,6 +41,21 @@ public class CrudMediaUseCase extends CrudUseCase<CrudMediaRequest>{
         dataGateway.deleteMedia(request.getRequestableId());
         presenter.mediaDeleted(mediaId);
     }
+
+    @Override
+    protected void readAll() {
+        List<Media> media = dataGateway.getMedia();
+        presenter.mediaRetrievedAll(
+                media.stream()
+                        .map(this::convert)
+                        .collect(Collectors.toList())
+        );
+    }
+
+    @Override
+    protected void readAllById() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     private Media convert(RequestableMedia media) {
         return EntityConverter.convert(media);
@@ -45,15 +63,5 @@ public class CrudMediaUseCase extends CrudUseCase<CrudMediaRequest>{
     
     private RequestableMedia convert(Media media) {
         return EntityConverter.convert(media);
-    }
-
-    @Override
-    protected void readAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    protected void readAllById() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

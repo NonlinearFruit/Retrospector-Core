@@ -1,6 +1,7 @@
 
 package retrospector.core.boundry;
 
+import java.util.List;
 import retrospector.core.request.model.RequestableFactoid;
 import retrospector.core.request.model.RequestableMedia;
 import retrospector.core.request.model.RequestableReview;
@@ -17,10 +18,9 @@ public interface Presenter {
     public void reviewAdded(RequestableReview requestableReview);
     public void reviewUpdated(RequestableReview requestableReview);
     public void reviewRetrieved(RequestableReview requestableReview);
-
     public void reviewDeleted(Integer id);
 
     public void mediaRetrieved(RequestableMedia convert);
-
     public void mediaUpdated(RequestableMedia convert);
+    public void mediaRetrievedAll(List<RequestableMedia> media);
 }
