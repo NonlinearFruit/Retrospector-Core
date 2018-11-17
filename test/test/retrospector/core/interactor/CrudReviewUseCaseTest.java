@@ -10,7 +10,6 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import org.mockito.runners.MockitoJUnitRunner;
 import retrospector.core.boundry.Interactor;
-import retrospector.core.boundry.Presenter;
 import retrospector.core.boundry.Request;
 import retrospector.core.datagateway.DataGateway;
 import retrospector.core.entity.Review;
@@ -20,6 +19,7 @@ import retrospector.core.interactor.CrudReviewUseCase;
 import retrospector.core.request.model.EntityConverter;
 import retrospector.core.request.model.RequestableReview;
 import test.retrospector.core.utility.TestEntity;
+import retrospector.core.boundry.ReviewPresenter;
 
 @RunWith(MockitoJUnitRunner.class)
 public class CrudReviewUseCaseTest {
@@ -27,7 +27,7 @@ public class CrudReviewUseCaseTest {
     @Mock
     private DataGateway dataGateway;
     @Mock
-    private Presenter presenter;
+    private ReviewPresenter presenter;
     private Interactor useCase;
     
     private Review review;

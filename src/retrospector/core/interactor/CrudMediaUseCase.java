@@ -3,17 +3,20 @@ package retrospector.core.interactor;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import retrospector.core.boundry.Presenter;
 import retrospector.core.datagateway.DataGateway;
 import retrospector.core.entity.Media;
 import retrospector.core.request.model.EntityConverter;
 import retrospector.core.request.model.RequestableMedia;
+import retrospector.core.boundry.MediaPresenter;
 
 public class CrudMediaUseCase extends CrudUseCase<CrudMediaRequest>{
 
-    public CrudMediaUseCase(DataGateway dataGateway, Presenter presenter) {
-        super(dataGateway, presenter);
+  private final MediaPresenter presenter;
+  private final DataGateway dataGateway;
+
+    public CrudMediaUseCase(DataGateway dataGateway, MediaPresenter presenter) {
+      this.dataGateway = dataGateway;
+      this.presenter = presenter;
     }
 
     @Override

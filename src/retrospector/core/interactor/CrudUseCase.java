@@ -2,20 +2,11 @@
 package retrospector.core.interactor;
 
 import retrospector.core.boundry.Interactor;
-import retrospector.core.boundry.Presenter;
 import retrospector.core.boundry.Request;
-import retrospector.core.datagateway.DataGateway;
 
 public abstract class CrudUseCase<T extends CrudRequest> implements Interactor{
 
     protected T request;
-    protected DataGateway dataGateway;
-    protected Presenter presenter;
-    
-    public CrudUseCase(DataGateway dataGateway, Presenter presenter) {
-        this.dataGateway = dataGateway;
-        this.presenter = presenter;
-    }
     
     @Override
     public void execute(Request request) {

@@ -9,8 +9,8 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import org.mockito.runners.MockitoJUnitRunner;
+import retrospector.core.boundry.FactoidPresenter;
 import retrospector.core.boundry.Interactor;
-import retrospector.core.boundry.Presenter;
 import retrospector.core.boundry.Request;
 import retrospector.core.datagateway.DataGateway;
 import retrospector.core.entity.Factoid;
@@ -27,7 +27,7 @@ public class CrudFactoidUseCaseTest {
     @Mock
     private DataGateway dataGateway;
     @Mock
-    private Presenter presenter;
+    private FactoidPresenter presenter;
     private Interactor useCase;
     
     private Factoid factoid;

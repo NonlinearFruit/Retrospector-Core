@@ -1,7 +1,7 @@
 
 package retrospector.core.interactor;
 
-import retrospector.core.boundry.Presenter;
+import retrospector.core.boundry.FactoidPresenter;
 import retrospector.core.datagateway.DataGateway;
 import retrospector.core.entity.Factoid;
 import retrospector.core.request.model.EntityConverter;
@@ -9,8 +9,12 @@ import retrospector.core.request.model.RequestableFactoid;
 
 public class CrudFactoidUseCase extends CrudUseCase<CrudFactoidRequest> {
 
-    public CrudFactoidUseCase(DataGateway dataGateway, Presenter presenter) {
-        super(dataGateway, presenter);
+  private final DataGateway dataGateway;
+  private final FactoidPresenter presenter;
+
+    public CrudFactoidUseCase(DataGateway dataGateway, FactoidPresenter presenter) {
+      this.dataGateway = dataGateway;
+      this.presenter = presenter;
     }
 
     @Override
@@ -49,11 +53,11 @@ public class CrudFactoidUseCase extends CrudUseCase<CrudFactoidRequest> {
 
     @Override
     protected void readAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
     protected void readAllById() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }

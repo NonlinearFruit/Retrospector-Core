@@ -1,16 +1,20 @@
 
 package retrospector.core.interactor;
 
-import retrospector.core.boundry.Presenter;
 import retrospector.core.datagateway.DataGateway;
 import retrospector.core.entity.Review;
 import retrospector.core.request.model.EntityConverter;
 import retrospector.core.request.model.RequestableReview;
+import retrospector.core.boundry.ReviewPresenter;
 
 public class CrudReviewUseCase extends CrudUseCase<CrudReviewRequest> {
 
-    public CrudReviewUseCase(DataGateway dataGateway, Presenter presenter) {
-        super(dataGateway, presenter);
+  private final DataGateway dataGateway;
+  private final ReviewPresenter presenter;
+
+    public CrudReviewUseCase(DataGateway dataGateway, ReviewPresenter presenter) {
+      this.dataGateway = dataGateway;
+      this.presenter = presenter;
     }
 
     @Override
