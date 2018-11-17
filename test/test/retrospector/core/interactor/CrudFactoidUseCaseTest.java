@@ -9,7 +9,7 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import org.mockito.runners.MockitoJUnitRunner;
-import retrospector.core.boundry.FactoidPresenter;
+import retrospector.core.boundry.CrudPresenter;
 import retrospector.core.boundry.Interactor;
 import retrospector.core.boundry.Request;
 import retrospector.core.datagateway.DataGateway;
@@ -27,7 +27,7 @@ public class CrudFactoidUseCaseTest {
     @Mock
     private DataGateway dataGateway;
     @Mock
-    private FactoidPresenter presenter;
+    private CrudPresenter<RequestableFactoid> presenter;
     private Interactor useCase;
     
     private Factoid factoid;
@@ -59,7 +59,7 @@ public class CrudFactoidUseCaseTest {
         
         useCase.execute(request);
         
-        verify(presenter, times(1)).factoidAdded(requestableFactoid);
+        verify(presenter, times(1)).added(requestableFactoid);
     }
     
     @Test
@@ -79,7 +79,7 @@ public class CrudFactoidUseCaseTest {
         
         useCase.execute(request);
         
-        verify(presenter, times(1)).factoidRetrieved(requestableFactoid);
+        verify(presenter, times(1)).retrieved(requestableFactoid);
     }
     
     @Test
@@ -97,7 +97,7 @@ public class CrudFactoidUseCaseTest {
         
         useCase.execute(request);
         
-        verify(presenter, times(1)).factoidUpdated(requestableFactoid);
+        verify(presenter, times(1)).updated(requestableFactoid);
     }
     
     @Test
@@ -117,6 +117,6 @@ public class CrudFactoidUseCaseTest {
         
         useCase.execute(request);
         
-        verify(presenter, times(1)).factoidDeleted(factoidId);
+        verify(presenter, times(1)).deleted(factoidId);
     }
 }

@@ -8,12 +8,12 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
-import org.mockito.Captor;
 import org.mockito.Mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import org.mockito.runners.MockitoJUnitRunner;
+import retrospector.core.boundry.CrudPresenter;
 import retrospector.core.boundry.Interactor;
 import retrospector.core.boundry.Request;
 import retrospector.core.datagateway.DataGateway;
@@ -24,7 +24,6 @@ import retrospector.core.interactor.CrudRequest.Crud;
 import retrospector.core.request.model.EntityConverter;
 import retrospector.core.request.model.RequestableMedia;
 import test.retrospector.core.utility.TestEntity;
-import retrospector.core.boundry.MediaPresenter;
 
 @RunWith(MockitoJUnitRunner.class)
 public class CrudMediaUseCaseTest {
@@ -32,7 +31,7 @@ public class CrudMediaUseCaseTest {
     @Mock
     private DataGateway dataGateway;
     @Mock
-    private MediaPresenter presenter;
+    private CrudPresenter<RequestableMedia> presenter;
     private Interactor useCase;
     
     private Media media;
@@ -64,7 +63,7 @@ public class CrudMediaUseCaseTest {
         
         useCase.execute(request);
         
-        verify(presenter, times(1)).mediaAdded(requestableMedia);
+        verify(presenter, times(1)).added(requestableMedia);
     }
     
     @Test
@@ -84,7 +83,7 @@ public class CrudMediaUseCaseTest {
         
         useCase.execute(request);
         
-        verify(presenter, times(1)).mediaRetrieved(requestableMedia);
+        verify(presenter, times(1)).retrieved(requestableMedia);
     }
     
     @Test
@@ -102,7 +101,7 @@ public class CrudMediaUseCaseTest {
         
         useCase.execute(request);
         
-        verify(presenter, times(1)).mediaUpdated(requestableMedia);
+        verify(presenter, times(1)).updated(requestableMedia);
     }
     
     @Test
@@ -122,7 +121,7 @@ public class CrudMediaUseCaseTest {
         
         useCase.execute(request);
         
-        verify(presenter, times(1)).mediaDeleted(mediaId);
+        verify(presenter, times(1)).deleted(mediaId);
     }
     
     @Test
@@ -143,7 +142,7 @@ public class CrudMediaUseCaseTest {
         
         useCase.execute(request);
         
-        verify(presenter, times(1)).mediaRetrievedAll(captor.capture());
+        verify(presenter, times(1)).retrievedAll(captor.capture());
         assertEquals(list.size(), captor.getValue().size());
         assertEquals(requestableMedia, captor.getValue().get(0));
     }

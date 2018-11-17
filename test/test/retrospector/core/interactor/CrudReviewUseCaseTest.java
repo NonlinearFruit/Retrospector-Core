@@ -9,6 +9,7 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import org.mockito.runners.MockitoJUnitRunner;
+import retrospector.core.boundry.CrudPresenter;
 import retrospector.core.boundry.Interactor;
 import retrospector.core.boundry.Request;
 import retrospector.core.datagateway.DataGateway;
@@ -19,7 +20,6 @@ import retrospector.core.interactor.CrudReviewUseCase;
 import retrospector.core.request.model.EntityConverter;
 import retrospector.core.request.model.RequestableReview;
 import test.retrospector.core.utility.TestEntity;
-import retrospector.core.boundry.ReviewPresenter;
 
 @RunWith(MockitoJUnitRunner.class)
 public class CrudReviewUseCaseTest {
@@ -27,7 +27,7 @@ public class CrudReviewUseCaseTest {
     @Mock
     private DataGateway dataGateway;
     @Mock
-    private ReviewPresenter presenter;
+    private CrudPresenter<RequestableReview> presenter;
     private Interactor useCase;
     
     private Review review;
@@ -59,7 +59,7 @@ public class CrudReviewUseCaseTest {
         
         useCase.execute(request);
         
-        verify(presenter, times(1)).reviewAdded(requestableReview);
+        verify(presenter, times(1)).added(requestableReview);
     }
 
     @Test
@@ -77,7 +77,7 @@ public class CrudReviewUseCaseTest {
         
         useCase.execute(request);
         
-        verify(presenter, times(1)).reviewUpdated(requestableReview);
+        verify(presenter, times(1)).updated(requestableReview);
     }
     
     @Test
@@ -95,7 +95,7 @@ public class CrudReviewUseCaseTest {
         
         useCase.execute(request);
         
-        verify(presenter, times(1)).reviewRetrieved(requestableReview);
+        verify(presenter, times(1)).retrieved(requestableReview);
     }
     
     @Test
@@ -113,6 +113,6 @@ public class CrudReviewUseCaseTest {
         
         useCase.execute(request);
         
-        verify(presenter, times(1)).reviewDeleted(requestableReview.getId());
+        verify(presenter, times(1)).deleted(requestableReview.getId());
     }
 }

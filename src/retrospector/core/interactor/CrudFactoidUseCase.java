@@ -1,7 +1,7 @@
 
 package retrospector.core.interactor;
 
-import retrospector.core.boundry.FactoidPresenter;
+import retrospector.core.boundry.CrudPresenter;
 import retrospector.core.datagateway.DataGateway;
 import retrospector.core.entity.Factoid;
 import retrospector.core.request.model.EntityConverter;
@@ -10,9 +10,9 @@ import retrospector.core.request.model.RequestableFactoid;
 public class CrudFactoidUseCase extends CrudUseCase<CrudFactoidRequest> {
 
   private final DataGateway dataGateway;
-  private final FactoidPresenter presenter;
+  private final CrudPresenter<RequestableFactoid> presenter;
 
-    public CrudFactoidUseCase(DataGateway dataGateway, FactoidPresenter presenter) {
+    public CrudFactoidUseCase(DataGateway dataGateway, CrudPresenter<RequestableFactoid> presenter) {
       this.dataGateway = dataGateway;
       this.presenter = presenter;
     }
@@ -20,27 +20,27 @@ public class CrudFactoidUseCase extends CrudUseCase<CrudFactoidRequest> {
     @Override
     protected void create() {
         Factoid factoid = dataGateway.addFactoid(convert(request.getRequestable()));
-        presenter.factoidAdded(convert(factoid));
+        presenter.added(convert(factoid));
     }
 
     @Override
     protected void read() {
         Factoid factoid = dataGateway.getFactoid(request.getRequestableId());
-        presenter.factoidRetrieved(convert(factoid));
+        presenter.retrieved(convert(factoid));
     }
 
     @Override
     protected void update() {
         RequestableFactoid requestable = request.getRequestable();
         Factoid factoid = dataGateway.updateFactoid(convert(requestable));
-        presenter.factoidUpdated(convert(factoid));
+        presenter.updated(convert(factoid));
     }
 
     @Override
     protected void delete() {
         int factoidId = request.getRequestableId();
         dataGateway.deleteFactoid(factoidId);
-        presenter.factoidDeleted(factoidId);
+        presenter.deleted(factoidId);
     }
     
     private Factoid convert(RequestableFactoid factoid) {
