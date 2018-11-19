@@ -2,42 +2,42 @@
 package retrospector.core.interactor;
 
 import retrospector.core.boundry.CrudPresenter;
-import retrospector.core.datagateway.DataGateway;
 import retrospector.core.entity.Review;
 import retrospector.core.request.model.EntityConverter;
 import retrospector.core.request.model.RequestableReview;
+import retrospector.core.datagateway.CrudDataGateway;
 
 public class CrudReviewUseCase extends CrudUseCase<CrudReviewRequest> {
 
-  private final DataGateway dataGateway;
+  private final CrudDataGateway<Review> dataGateway;
   private final CrudPresenter<RequestableReview> presenter;
 
-    public CrudReviewUseCase(DataGateway dataGateway, CrudPresenter<RequestableReview> presenter) {
+    public CrudReviewUseCase(CrudDataGateway<Review> dataGateway, CrudPresenter<RequestableReview> presenter) {
       this.dataGateway = dataGateway;
       this.presenter = presenter;
     }
 
     @Override
     public void create() {
-        Review review = dataGateway.addReview(convert(request.getRequestable()));
+        Review review = dataGateway.add(convert(request.getRequestable()));
         presenter.added(convert(review));
     }
     
     @Override
     public void read() {
-        Review review = dataGateway.getReview(request.getRequestableId());
+        Review review = dataGateway.get(request.getRequestableId());
         presenter.retrieved(convert(review));
     }
 
     @Override
     public void update() {
-        Review review = dataGateway.updateReview(convert(request.getRequestable()));
+        Review review = dataGateway.update(convert(request.getRequestable()));
         presenter.updated(convert(review));
     }
 
     @Override
     public void delete() {
-        dataGateway.deleteReview(request.getRequestableId());
+        dataGateway.delete(request.getRequestableId());
         presenter.deleted(request.getRequestableId());
     }
     

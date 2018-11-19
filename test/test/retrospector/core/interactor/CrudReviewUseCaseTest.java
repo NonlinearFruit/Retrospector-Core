@@ -12,7 +12,6 @@ import org.mockito.runners.MockitoJUnitRunner;
 import retrospector.core.boundry.CrudPresenter;
 import retrospector.core.boundry.Interactor;
 import retrospector.core.boundry.Request;
-import retrospector.core.datagateway.DataGateway;
 import retrospector.core.entity.Review;
 import retrospector.core.interactor.CrudRequest.Crud;
 import retrospector.core.interactor.CrudReviewRequest;
@@ -20,12 +19,13 @@ import retrospector.core.interactor.CrudReviewUseCase;
 import retrospector.core.request.model.EntityConverter;
 import retrospector.core.request.model.RequestableReview;
 import test.retrospector.core.utility.TestEntity;
+import retrospector.core.datagateway.CrudDataGateway;
 
 @RunWith(MockitoJUnitRunner.class)
 public class CrudReviewUseCaseTest {
     
     @Mock
-    private DataGateway dataGateway;
+    private CrudDataGateway<Review> dataGateway;
     @Mock
     private CrudPresenter<RequestableReview> presenter;
     private Interactor useCase;
@@ -39,9 +39,9 @@ public class CrudReviewUseCaseTest {
         review = TestEntity.getReview();
         requestableReview = EntityConverter.convert(review);
         
-        when(dataGateway.addReview(review)).thenAnswer(i -> review);
-        when(dataGateway.getReview(review.getId())).thenAnswer(i -> review);
-        when(dataGateway.updateReview(review)).thenAnswer(i -> review);
+        when(dataGateway.add(review)).thenAnswer(i -> review);
+        when(dataGateway.get(review.getId())).thenAnswer(i -> review);
+        when(dataGateway.update(review)).thenAnswer(i -> review);
     }
 
     @Test
@@ -50,7 +50,7 @@ public class CrudReviewUseCaseTest {
         
         useCase.execute(request);
         
-        verify(dataGateway, times(1)).addReview(review);
+        verify(dataGateway, times(1)).add(review);
     }
     
     @Test
@@ -68,7 +68,7 @@ public class CrudReviewUseCaseTest {
         
         useCase.execute(request);
         
-        verify(dataGateway, times(1)).updateReview(review);
+        verify(dataGateway, times(1)).update(review);
     }    
     
     @Test
@@ -86,7 +86,7 @@ public class CrudReviewUseCaseTest {
         
         useCase.execute(request);
         
-        verify(dataGateway, times(1)).getReview(requestableReview.getId());
+        verify(dataGateway, times(1)).get(requestableReview.getId());
     }
     
     @Test
@@ -104,7 +104,7 @@ public class CrudReviewUseCaseTest {
         
         useCase.execute(request);
         
-        verify(dataGateway, times(1)).deleteReview(requestableReview.getId());
+        verify(dataGateway, times(1)).delete(requestableReview.getId());
     }
     
     @Test

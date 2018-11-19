@@ -12,7 +12,6 @@ import org.mockito.runners.MockitoJUnitRunner;
 import retrospector.core.boundry.CrudPresenter;
 import retrospector.core.boundry.Interactor;
 import retrospector.core.boundry.Request;
-import retrospector.core.datagateway.DataGateway;
 import retrospector.core.entity.Factoid;
 import retrospector.core.interactor.CrudFactoidRequest;
 import retrospector.core.interactor.CrudFactoidUseCase;
@@ -20,12 +19,13 @@ import retrospector.core.interactor.CrudRequest.Crud;
 import retrospector.core.request.model.EntityConverter;
 import retrospector.core.request.model.RequestableFactoid;
 import test.retrospector.core.utility.TestEntity;
+import retrospector.core.datagateway.CrudDataGateway;
 
 @RunWith(MockitoJUnitRunner.class)
 public class CrudFactoidUseCaseTest {
     
     @Mock
-    private DataGateway dataGateway;
+    private CrudDataGateway<Factoid> dataGateway;
     @Mock
     private CrudPresenter<RequestableFactoid> presenter;
     private Interactor useCase;
@@ -39,9 +39,9 @@ public class CrudFactoidUseCaseTest {
         factoid = TestEntity.getFactoid();
         requestableFactoid = EntityConverter.convert(factoid);
         
-        when(dataGateway.addFactoid(factoid)).thenAnswer(i -> factoid);
-        when(dataGateway.getFactoid(factoid.getId())).thenAnswer(i -> factoid);
-        when(dataGateway.updateFactoid(factoid)).thenAnswer(i -> factoid);
+        when(dataGateway.add(factoid)).thenAnswer(i -> factoid);
+        when(dataGateway.get(factoid.getId())).thenAnswer(i -> factoid);
+        when(dataGateway.update(factoid)).thenAnswer(i -> factoid);
     }
     
     @Test
@@ -50,7 +50,7 @@ public class CrudFactoidUseCaseTest {
         
         useCase.execute(request);
         
-        verify(dataGateway, times(1)).addFactoid(factoid);
+        verify(dataGateway, times(1)).add(factoid);
     }
         
     @Test
@@ -69,7 +69,7 @@ public class CrudFactoidUseCaseTest {
         
         useCase.execute(request);
         
-        verify(dataGateway, times(1)).getFactoid(factoidId);
+        verify(dataGateway, times(1)).get(factoidId);
     }
     
     @Test
@@ -88,7 +88,7 @@ public class CrudFactoidUseCaseTest {
         
         useCase.execute(request);
         
-        verify(dataGateway, times(1)).updateFactoid(factoid);
+        verify(dataGateway, times(1)).update(factoid);
     }
     
     @Test
@@ -107,7 +107,7 @@ public class CrudFactoidUseCaseTest {
         
         useCase.execute(request);
         
-        verify(dataGateway, times(1)).deleteFactoid(factoidId);
+        verify(dataGateway, times(1)).delete(factoidId);
     }
     
     @Test

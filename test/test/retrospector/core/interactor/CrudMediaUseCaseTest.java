@@ -16,7 +16,6 @@ import org.mockito.runners.MockitoJUnitRunner;
 import retrospector.core.boundry.CrudPresenter;
 import retrospector.core.boundry.Interactor;
 import retrospector.core.boundry.Request;
-import retrospector.core.datagateway.DataGateway;
 import retrospector.core.entity.Media;
 import retrospector.core.interactor.CrudMediaRequest;
 import retrospector.core.interactor.CrudMediaUseCase;
@@ -24,12 +23,13 @@ import retrospector.core.interactor.CrudRequest.Crud;
 import retrospector.core.request.model.EntityConverter;
 import retrospector.core.request.model.RequestableMedia;
 import test.retrospector.core.utility.TestEntity;
+import retrospector.core.datagateway.CrudDataGateway;
 
 @RunWith(MockitoJUnitRunner.class)
 public class CrudMediaUseCaseTest {
     
     @Mock
-    private DataGateway dataGateway;
+    private CrudDataGateway<Media> dataGateway;
     @Mock
     private CrudPresenter<RequestableMedia> presenter;
     private Interactor useCase;
@@ -43,9 +43,9 @@ public class CrudMediaUseCaseTest {
         media = TestEntity.getMedia();
         requestableMedia = EntityConverter.convert(media);
         
-        when(dataGateway.addMedia(media)).thenReturn(media);
-        when(dataGateway.getMedia(media.getId())).thenReturn(media);
-        when(dataGateway.updateMedia(media)).thenReturn(media);
+        when(dataGateway.add(media)).thenReturn(media);
+        when(dataGateway.get(media.getId())).thenReturn(media);
+        when(dataGateway.update(media)).thenReturn(media);
     }
     
     @Test
@@ -54,7 +54,7 @@ public class CrudMediaUseCaseTest {
         
         useCase.execute(request);
         
-        verify(dataGateway, times(1)).addMedia(media);
+        verify(dataGateway, times(1)).add(media);
     }
         
     @Test
@@ -73,7 +73,7 @@ public class CrudMediaUseCaseTest {
         
         useCase.execute(request);
         
-        verify(dataGateway, times(1)).getMedia(mediaId);
+        verify(dataGateway, times(1)).get(mediaId);
     }
     
     @Test
@@ -92,7 +92,7 @@ public class CrudMediaUseCaseTest {
         
         useCase.execute(request);
         
-        verify(dataGateway, times(1)).updateMedia(media);
+        verify(dataGateway, times(1)).update(media);
     }
     
     @Test
@@ -111,7 +111,7 @@ public class CrudMediaUseCaseTest {
         
         useCase.execute(request);
         
-        verify(dataGateway, times(1)).deleteMedia(mediaId);
+        verify(dataGateway, times(1)).delete(mediaId);
     }
     
     @Test
@@ -130,14 +130,14 @@ public class CrudMediaUseCaseTest {
         
         useCase.execute(request);
         
-        verify(dataGateway, times(1)).getMedia();
+        verify(dataGateway, times(1)).getAll();
     }
     
     @Test
     public void readAllMedia_CallsPresenter() {
         ArgumentCaptor<List<RequestableMedia>> captor = ArgumentCaptor.forClass(List.class);
         List<Media> list = Arrays.asList(media);
-        when(dataGateway.getMedia()).thenReturn(list);
+        when(dataGateway.getAll()).thenReturn(list);
         Request request = new CrudMediaRequest(Crud.ReadAll);
         
         useCase.execute(request);
