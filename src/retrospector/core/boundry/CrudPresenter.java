@@ -9,4 +9,5 @@ public interface CrudPresenter<T extends RequestableEntity> {
     public void updated(T entity);
     public void deleted(int id);
     public void retrievedAll(List<T> entity);
+    public void retrievedAllByMediaId(List<T> entity);
 }

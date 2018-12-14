@@ -1,5 +1,5 @@
 
-package retrospector.core.interactor;
+package retrospector.core.interactor.crud;
 
 import retrospector.core.boundry.CrudPresenter;
 import retrospector.core.entity.Review;

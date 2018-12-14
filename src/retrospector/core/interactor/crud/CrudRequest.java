@@ -1,11 +1,11 @@
 
-package retrospector.core.interactor;
+package retrospector.core.interactor.crud;
 
 import retrospector.core.boundry.Request;
 import retrospector.core.request.model.RequestableEntity;
 
 public abstract class CrudRequest<T extends RequestableEntity> implements Request{
-    public enum Crud {Create, Read, Update, Delete, ReadAll, ReadAllById}
+    public enum Crud {Create, Read, Update, Delete, ReadAll, ReadAllByMediaId}
     
     private Crud crud;
     private T entity;

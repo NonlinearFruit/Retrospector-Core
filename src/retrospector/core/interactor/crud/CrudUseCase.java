@@ -1,5 +1,5 @@
 
-package retrospector.core.interactor;
+package retrospector.core.interactor.crud;
 
 import retrospector.core.boundry.Interactor;
 import retrospector.core.boundry.Request;
@@ -28,7 +28,7 @@ public abstract class CrudUseCase<T extends CrudRequest> implements Interactor{
             case ReadAll:
                 readAll();
                 break;
-            case ReadAllById:
+            case ReadAllByMediaId:
                 readAllById();
                 break;
         }

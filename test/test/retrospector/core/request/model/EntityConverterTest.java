@@ -1,5 +1,5 @@
 
-package test.retrospector.core.request.entity;
+package test.retrospector.core.request.model;
 
 import retrospector.core.request.model.RequestableFactoid;
 import retrospector.core.request.model.EntityConverter;

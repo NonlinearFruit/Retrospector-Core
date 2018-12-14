@@ -1,5 +1,5 @@
 
-package test.retrospector.core.interactor;
+package test.retrospector.core.interactor.crud;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -13,9 +13,9 @@ import retrospector.core.boundry.CrudPresenter;
 import retrospector.core.boundry.Interactor;
 import retrospector.core.boundry.Request;
 import retrospector.core.entity.Review;
-import retrospector.core.interactor.CrudRequest.Crud;
-import retrospector.core.interactor.CrudReviewRequest;
-import retrospector.core.interactor.CrudReviewUseCase;
+import retrospector.core.interactor.crud.CrudRequest.Crud;
+import retrospector.core.interactor.crud.CrudReviewRequest;
+import retrospector.core.interactor.crud.CrudReviewUseCase;
 import retrospector.core.request.model.EntityConverter;
 import retrospector.core.request.model.RequestableReview;
 import test.retrospector.core.utility.TestEntity;

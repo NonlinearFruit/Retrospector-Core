@@ -1,5 +1,5 @@
 
-package retrospector.core.interactor;
+package retrospector.core.interactor.crud;
 
 import java.util.List;
 import java.util.stream.Collectors;

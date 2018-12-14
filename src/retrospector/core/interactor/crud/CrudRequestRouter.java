@@ -1,4 +1,4 @@
-package retrospector.core.interactor;
+package retrospector.core.interactor.crud;
 
 import retrospector.core.boundry.Request;
 import retrospector.core.boundry.RequestRouter;

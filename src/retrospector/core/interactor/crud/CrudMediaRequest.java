@@ -1,4 +1,4 @@
-package retrospector.core.interactor;
+package retrospector.core.interactor.crud;
 
 import retrospector.core.request.model.RequestableMedia;
 

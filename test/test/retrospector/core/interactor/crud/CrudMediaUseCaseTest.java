@@ -1,5 +1,5 @@
 
-package test.retrospector.core.interactor;
+package test.retrospector.core.interactor.crud;
 
 import java.util.Arrays;
 import java.util.List;
@@ -17,9 +17,9 @@ import retrospector.core.boundry.CrudPresenter;
 import retrospector.core.boundry.Interactor;
 import retrospector.core.boundry.Request;
 import retrospector.core.entity.Media;
-import retrospector.core.interactor.CrudMediaRequest;
-import retrospector.core.interactor.CrudMediaUseCase;
-import retrospector.core.interactor.CrudRequest.Crud;
+import retrospector.core.interactor.crud.CrudMediaRequest;
+import retrospector.core.interactor.crud.CrudMediaUseCase;
+import retrospector.core.interactor.crud.CrudRequest.Crud;
 import retrospector.core.request.model.EntityConverter;
 import retrospector.core.request.model.RequestableMedia;
 import test.retrospector.core.utility.TestEntity;
