@@ -23,7 +23,7 @@ import retrospector.core.request.model.RequestableReview;
 import retrospector.core.interactor.crud.CrudRequestRouter;
 
 @RunWith(MockitoJUnitRunner.class)
-public class CrudRequestRouterTests {
+public class CrudRequestRouterTest {
     @Mock
     private CrudMediaUseCase mediaUse;
     @Mock
