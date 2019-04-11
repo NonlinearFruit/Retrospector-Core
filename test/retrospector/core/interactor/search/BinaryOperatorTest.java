@@ -13,18 +13,20 @@ import org.junit.runners.Parameterized.Parameters;
 
 @RunWith(Parameterized.class)
 public class BinaryOperatorTest {
+  private static final String syntaxOp = "|";
+
   @Parameters
-    public static Collection<Object[]> data() {
-      return Arrays.asList(new Object[][] {
-        {":", new AndOperator()},
-        {"|", new OrOperator()}
-      });
-    }
+  public static Collection<Object[]> data() {
+    return Arrays.asList(new Object[][] {
+      {new AndOperator(syntaxOp), OperatorType.And},
+      {new OrOperator(syntaxOp), OperatorType.Or}
+    });
+  }
 
   @Parameter(0)
-  public String syntaxOp;
-  @Parameter(1)
   public Operator operator;
+  @Parameter(1)
+  public OperatorType type;
 
   @Test
   public void parse_Parses() {
@@ -68,5 +70,10 @@ public class BinaryOperatorTest {
 
     for (String piece : pieces)
       assertEquals(word.trim(), piece);
+  }
+
+  @Test
+  public void getType_ReturnsType() {
+    assertEquals(type, operator.getType());
   }
 }

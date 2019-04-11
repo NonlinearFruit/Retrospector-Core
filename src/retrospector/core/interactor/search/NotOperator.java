@@ -5,7 +5,12 @@ import java.util.List;
 
 public class NotOperator implements Operator {
   private String whitespace = "\\s*";
-  private String opCharacter = "!";
+  private OperatorType type = OperatorType.Not;
+  private String opCharacter;
+
+  NotOperator(String syntaxOp) {
+    opCharacter = syntaxOp;
+  }
 
   @Override
   public List<String> parse(String query) {
@@ -14,5 +19,10 @@ public class NotOperator implements Operator {
     if (query.startsWith(opCharacter))
       pieces.add(query.substring(opCharacter.length()).trim());
     return pieces;
+  }
+
+  @Override
+  public OperatorType getType() {
+    return type;
   }
 }

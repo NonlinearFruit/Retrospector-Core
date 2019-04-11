@@ -13,17 +13,20 @@ import org.junit.runners.Parameterized.Parameters;
 
 @RunWith(Parameterized.class)
 public class UnaryOperatorTest {
+  private static final String syntaxOp = "|";
+
   @Parameters
-    public static Collection<Object[]> data() {
-      return Arrays.asList(new Object[][] {
-        {"!", new NotOperator()}
-      });
-    }
+  public static Collection<Object[]> data() {
+    return Arrays.asList(new Object[][] {
+      {new NotOperator(syntaxOp), OperatorType.Not}
+    });
+  }
 
   @Parameter(0)
-  public String syntaxOp;
-  @Parameter(1)
   public Operator operator;
+
+  @Parameter(1)
+  public OperatorType type;
 
   @Test
   public void parse_Parses() {
@@ -53,7 +56,7 @@ public class UnaryOperatorTest {
 
     assertTrue(pieces.isEmpty());
   }
-;
+
   @Test
   public void parse_Trims() {
     String word = "  words  ";
@@ -63,5 +66,10 @@ public class UnaryOperatorTest {
 
     for (String piece : pieces)
       assertEquals(word.trim(), piece);
+  }
+
+  @Test
+  public void getType_Works() {
+    assertEquals(type, operator.getType());
   }
 }

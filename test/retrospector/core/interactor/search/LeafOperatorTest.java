@@ -11,7 +11,7 @@ public class LeafOperatorTest {
 
   @Before
   public void Setup() {
-    operator = new LeafOperator();
+    operator = new LeafOperator(opSyntax);
   }
 
   @Test
@@ -85,6 +85,19 @@ public class LeafOperatorTest {
 
     verify(command, comparator, value);
   }
+
+  @Test
+  public void parse_NoResult_WhenBadComparator() {
+    String command = "#";
+    String comparator = "d";
+    String value = "7";
+    String query = opSyntax + command + comparator + value;
+
+    boolean success = operator.parse(query);
+
+    assertFalse(success);
+  }
+
   private void verify(String command, String comparator, String value) {
     assertEquals(command, operator.getCommand());
     assertEquals(comparator, operator.getComparator());

@@ -4,12 +4,15 @@ import java.util.Arrays;
 import java.util.Optional;
 
 public class LeafOperator {
-  private String whitespace = "\\s*";
-  private String opCharacter = "`";
+  private String opCharacter;
 
-  private String command;
+  private  String command;
   private String comparator;
   private String value;
+
+  public LeafOperator(String syntaxOp) {
+    opCharacter = syntaxOp;
+  }
 
   public boolean parse(String query) {
     query = query.trim();
@@ -32,15 +35,15 @@ public class LeafOperator {
     return true;
   }
 
-  String getCommand() {
+  public String getCommand() {
     return command;
   }
 
-  String getComparator() {
+  public String getComparator() {
     return comparator;
   }
 
-  String getValue() {
+  public String getValue() {
     return value;
   }
 

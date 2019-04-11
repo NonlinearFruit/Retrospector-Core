@@ -1,5 +1,5 @@
 package retrospector.core.interactor.search;
 
 public enum OperatorType {
- And, Or, Not, Leaf
+ And, Or, Not, Leaf, GiveMeEverything
 }
