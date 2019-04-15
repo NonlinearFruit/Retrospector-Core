@@ -135,7 +135,7 @@ public class CrudMediaUseCaseTest {
     
     @Test
     public void readAllMedia_CallsPresenter() {
-        ArgumentCaptor<List<RequestableMedia>> captor = ArgumentCaptor.forClass(List.class);
+        ArgumentCaptor<List> captor = ArgumentCaptor.forClass(List.class);
         List<Media> list = Arrays.asList(media);
         when(dataGateway.getAll()).thenReturn(list);
         Request request = new CrudMediaRequest(Crud.ReadAll);
