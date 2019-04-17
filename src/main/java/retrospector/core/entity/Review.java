@@ -2,6 +2,7 @@
 package retrospector.core.entity;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class Review implements Entity{
     
@@ -71,15 +72,6 @@ public class Review implements Entity{
         this.rating = rating;
     }
     
-    public void clone(Review review){
-        setId(review.getId());
-        setMediaId(review.getMediaId());
-        setUser(review.getUser());
-        setReview(review.getReview());
-        setDate(review.getDate());
-        setRating(review.getRating());
-    }
-    
     @Override
     public boolean equals(Object object) {
         if(! (object instanceof Review) )
@@ -94,4 +86,16 @@ public class Review implements Entity{
                 getUser().equals(review.getUser()) &&
                 getReview().equals(review.getReview());
     }
+
+  @Override
+  public int hashCode() {
+    int hash = 3;
+    hash = 13 * hash + Objects.hashCode(this.date);
+    hash = 13 * hash + Objects.hashCode(this.user);
+    hash = 13 * hash + Objects.hashCode(this.review);
+    hash = 13 * hash + Objects.hashCode(this.rating);
+    hash = 13 * hash + Objects.hashCode(this.mediaId);
+    hash = 13 * hash + Objects.hashCode(this.id);
+    return hash;
+  }
 }

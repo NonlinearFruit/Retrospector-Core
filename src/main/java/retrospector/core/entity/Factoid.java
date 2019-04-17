@@ -1,6 +1,8 @@
 
 package retrospector.core.entity;
 
+import java.util.Objects;
+
 public class Factoid implements Entity{
     private String title;
     private String content;
@@ -63,4 +65,14 @@ public class Factoid implements Entity{
                 getTitle().equals(factoid.getTitle()) &&
                 getContent().equals(factoid.getContent());
     }
+
+  @Override
+  public int hashCode() {
+    int hash = 5;
+    hash = 17 * hash + Objects.hashCode(this.title);
+    hash = 17 * hash + Objects.hashCode(this.content);
+    hash = 17 * hash + Objects.hashCode(this.id);
+    hash = 17 * hash + Objects.hashCode(this.mediaId);
+    return hash;
+  }
 }
