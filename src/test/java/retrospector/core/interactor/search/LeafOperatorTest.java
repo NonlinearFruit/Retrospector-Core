@@ -43,7 +43,25 @@ public class LeafOperatorTest {
 
   @Test
   public void parse_NoResult_WhenNoComparator() {
-    String query = opSyntax + "U";
+    String query = opSyntax + "U" + "Ebenezr";
+
+    boolean success = operator.parse(query);
+
+    assertFalse(success);
+  }
+
+  @Test
+  public void parse_NoResult_WhenNoCommand() {
+    String query = opSyntax + LeafComparator.Contains.getValue() + "Ebenezer";
+
+    boolean success = operator.parse(query);
+
+    assertFalse(success);
+  }
+
+  @Test
+  public void parse_NoResult_WhenNoValue() {
+    String query = opSyntax + "U" + LeafComparator.Contains.getValue();
 
     boolean success = operator.parse(query);
 

@@ -25,13 +25,14 @@ public class LeafOperator {
       return false;
 
     String[] commandValue = query.split(comparator);
+    if (commandValue.length < 2)
+      return false;
+
     command = commandValue[0];
     if (command.isEmpty())
       return false;
 
     value = commandValue[1];
-    if (value.isEmpty())
-      return false;
     return true;
   }
 
