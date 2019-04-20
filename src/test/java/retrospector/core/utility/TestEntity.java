@@ -1,5 +1,5 @@
 
-package test.retrospector.core.utility;
+package retrospector.core.utility;
 
 import java.time.LocalDate;
 import retrospector.core.entity.Factoid;

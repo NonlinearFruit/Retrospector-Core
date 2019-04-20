@@ -1,4 +1,4 @@
-package test.retrospector.core.interactor.crud;
+package retrospector.core.interactor.crud;
 
 import java.time.LocalDate;
 import org.junit.Before;

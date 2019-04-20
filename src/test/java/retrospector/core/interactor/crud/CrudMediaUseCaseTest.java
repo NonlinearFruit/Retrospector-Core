@@ -1,5 +1,5 @@
 
-package test.retrospector.core.interactor.crud;
+package retrospector.core.interactor.crud;
 
 import java.util.Arrays;
 import java.util.List;
@@ -22,7 +22,7 @@ import retrospector.core.interactor.crud.CrudMediaUseCase;
 import retrospector.core.interactor.crud.CrudRequest.Crud;
 import retrospector.core.request.model.EntityConverter;
 import retrospector.core.request.model.RequestableMedia;
-import test.retrospector.core.utility.TestEntity;
+import retrospector.core.utility.TestEntity;
 import retrospector.core.datagateway.CrudDataGateway;
 
 @RunWith(MockitoJUnitRunner.class)

@@ -1,5 +1,5 @@
 
-package test.retrospector.core.interactor.crud;
+package retrospector.core.interactor.crud;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -18,7 +18,7 @@ import retrospector.core.interactor.crud.CrudFactoidUseCase;
 import retrospector.core.interactor.crud.CrudRequest.Crud;
 import retrospector.core.request.model.EntityConverter;
 import retrospector.core.request.model.RequestableFactoid;
-import test.retrospector.core.utility.TestEntity;
+import retrospector.core.utility.TestEntity;
 import retrospector.core.datagateway.CrudDataGateway;
 
 @RunWith(MockitoJUnitRunner.class)

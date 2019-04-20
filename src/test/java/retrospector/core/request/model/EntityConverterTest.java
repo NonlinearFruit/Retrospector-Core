@@ -1,5 +1,5 @@
 
-package test.retrospector.core.request.model;
+package retrospector.core.request.model;
 
 import retrospector.core.request.model.RequestableFactoid;
 import retrospector.core.request.model.EntityConverter;
@@ -12,7 +12,7 @@ import static org.junit.Assert.*;
 import retrospector.core.entity.Factoid;
 import retrospector.core.entity.Media;
 import retrospector.core.entity.Review;
-import test.retrospector.core.utility.TestEntity;
+import retrospector.core.utility.TestEntity;
 
 public class EntityConverterTest {
     
