@@ -17,8 +17,6 @@ import retrospector.core.boundry.CrudPresenter;
 import retrospector.core.boundry.Interactor;
 import retrospector.core.boundry.Request;
 import retrospector.core.entity.Media;
-import retrospector.core.interactor.crud.CrudMediaRequest;
-import retrospector.core.interactor.crud.CrudMediaUseCase;
 import retrospector.core.interactor.crud.CrudRequest.Crud;
 import retrospector.core.request.model.EntityConverter;
 import retrospector.core.request.model.RequestableMedia;
@@ -145,5 +143,14 @@ public class CrudMediaUseCaseTest {
         verify(presenter, times(1)).retrievedAll(captor.capture());
         assertEquals(list.size(), captor.getValue().size());
         assertEquals(requestableMedia, captor.getValue().get(0));
+    }
+    
+    @Test(expected = UnsupportedOperationException.class)
+    public void readAllMediaByMediaId_ThrowsException() {
+        Request request = new CrudMediaRequest(Crud.ReadAllByMediaId);
+        
+        useCase.execute(request);
+        
+        verify(dataGateway, times(1)).getAll();
     }
 }

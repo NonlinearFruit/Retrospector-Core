@@ -119,4 +119,18 @@ public class CrudFactoidUseCaseTest {
         
         verify(presenter, times(1)).deleted(factoidId);
     }
+    
+    @Test(expected = UnsupportedOperationException.class)
+    public void readAllReviews_ThrowsException() {
+        Request request = new CrudFactoidRequest(Crud.ReadAll);
+
+        useCase.execute(request);
+    }
+    
+    @Test(expected = UnsupportedOperationException.class)
+    public void readAllReviewsByMediaId_ThrowsException() {
+        Request request = new CrudFactoidRequest(Crud.ReadAllByMediaId);
+        
+        useCase.execute(request);
+    }
 }

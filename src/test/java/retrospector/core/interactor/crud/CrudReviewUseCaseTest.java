@@ -115,4 +115,18 @@ public class CrudReviewUseCaseTest {
         
         verify(presenter, times(1)).deleted(requestableReview.getId());
     }
+    
+    @Test(expected = UnsupportedOperationException.class)
+    public void readAllReviews_ThrowsException() {
+        Request request = new CrudReviewRequest(Crud.ReadAll);
+        
+        useCase.execute(request);
+    }
+    
+    @Test(expected = UnsupportedOperationException.class)
+    public void readAllReviewsByMediaId_ThrowsException() {
+        Request request = new CrudReviewRequest(Crud.ReadAllByMediaId);
+        
+        useCase.execute(request);
+    }
 }
