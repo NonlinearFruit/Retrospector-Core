@@ -5,8 +5,6 @@ jdk:
   - oraclejdk8
 
 script:
-  - rm gradle.properties
-  - mv gradle-travisci.properties gradle.properties
   - chmod +x gradlew
   - ./gradlew build
 
