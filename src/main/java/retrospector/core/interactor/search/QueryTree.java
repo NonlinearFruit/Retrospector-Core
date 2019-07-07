@@ -19,7 +19,7 @@ public class QueryTree {
     this.type = type;
   }
 
-  void addBranch(QueryTree branch) {
+  public void addBranch(QueryTree branch) {
     branches.add(branch);
   }
 
@@ -27,23 +27,23 @@ public class QueryTree {
     return type;
   }
 
-  boolean hasBranches() {
+  public boolean hasBranches() {
     return !branches.isEmpty();
   }
 
-  List<QueryTree> getBranches() {
+  public List<QueryTree> getBranches() {
     return Collections.unmodifiableList(branches);
   }
 
-  void addLeaf(QueryLeaf branch) {
+  public void addLeaf(QueryLeaf branch) {
     leaves.add(branch);
   }
 
-  List<QueryLeaf> getLeaves() {
+  public List<QueryLeaf> getLeaves() {
     return Collections.unmodifiableList(leaves);
   }
 
-  boolean hasLeaves() {
+  public boolean hasLeaves() {
     return !leaves.isEmpty();
   }
 }
