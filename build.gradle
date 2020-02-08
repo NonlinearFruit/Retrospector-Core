@@ -10,14 +10,18 @@ repositories {
 }
 
 dependencies {
-    testCompile 'junit:junit:4.12'
-    testCompile 'org.mockito:mockito-core:1.+'
+    testImplementation 'junit:junit:4.12'
+    testImplementation 'org.mockito:mockito-core:1.+'
 }
 
 test {
     testLogging {
         events "passed", "skipped", "failed"
     }
+}
+
+jacoco {
+    toolVersion = "0.8.5"
 }
 
 jacocoTestReport {
