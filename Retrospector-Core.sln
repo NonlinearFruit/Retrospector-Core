@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Retrospector.Core", "Retrospector.Core\Retrospector.Core.csproj", "{690B45F9-AFD8-477F-9C15-BB1FD381A5DD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Retrospector.Core.Tests", "Retrospector.Core.Tests\Retrospector.Core.Tests.csproj", "{6CC3760F-BCD1-4A72-B808-0C4591C16064}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{690B45F9-AFD8-477F-9C15-BB1FD381A5DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{690B45F9-AFD8-477F-9C15-BB1FD381A5DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{690B45F9-AFD8-477F-9C15-BB1FD381A5DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{690B45F9-AFD8-477F-9C15-BB1FD381A5DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CC3760F-BCD1-4A72-B808-0C4591C16064}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CC3760F-BCD1-4A72-B808-0C4591C16064}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CC3760F-BCD1-4A72-B808-0C4591C16064}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CC3760F-BCD1-4A72-B808-0C4591C16064}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
