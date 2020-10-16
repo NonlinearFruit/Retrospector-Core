@@ -15,29 +15,50 @@ namespace Retrospector.Core.Tests.TestDoubles.Crud
             return ReturnFor_Add;
         }
 
+        public T ReturnFor_Get { get; set; }
+        public int LastIdPassedTo_Get { get; set; }
+        public int CountOf_Get_Calls { get; set; }
         public T Get(int id)
         {
-            throw new System.NotImplementedException();
+            CountOf_Get_Calls++;
+            LastIdPassedTo_Get = id;
+            return ReturnFor_Get;
         }
 
-        public T Update(T entity)
+        public T ReturnFor_Update { get; set; }
+        public T LastModelPassedTo_Update { get; set; }
+        public int CountOf_Update_Calls { get; set; }
+        public T Update(T model)
         {
-            throw new System.NotImplementedException();
+            CountOf_Update_Calls++;
+            LastModelPassedTo_Update = model;
+            return ReturnFor_Update;
         }
 
+        public int LastIdPassedTo_Delete { get; set; }
+        public int CountOf_Delete_Calls { get; set; }
         public void Delete(int id)
         {
-            throw new System.NotImplementedException();
+            CountOf_Delete_Calls++;
+            LastIdPassedTo_Delete = id;
         }
 
+        public int CountOf_GetAll_Calls { get; set; }
+        public IEnumerable<T> ReturnFor_GetAll { get; set; }
         public IEnumerable<T> GetAll()
         {
-            throw new System.NotImplementedException();
+            CountOf_GetAll_Calls++;
+            return ReturnFor_GetAll;
         }
 
+        public IEnumerable<T> ReturnFor_GetMediaById { get; set; }
+        public int LastMediaIdPassedTo_GetByMediaId { get; set; }
+        public int CountOf_GetByMediaId_Calls { get; set; }
         public IEnumerable<T> GetByMediaId(int mediaId)
         {
-            throw new System.NotImplementedException();
+            CountOf_GetByMediaId_Calls++;
+            LastMediaIdPassedTo_GetByMediaId = mediaId;
+            return ReturnFor_GetMediaById;
         }
     }
 }

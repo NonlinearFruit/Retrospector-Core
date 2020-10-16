@@ -7,6 +7,6 @@ namespace Retrospector.Core.Crud.Models
         Update,
         Delete,
         ReadAll,
-        ReadAllByMediaId
+        ReadByMediaId
     }
 }

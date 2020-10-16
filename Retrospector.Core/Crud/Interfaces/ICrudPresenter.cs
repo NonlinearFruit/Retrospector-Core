@@ -4,11 +4,11 @@ namespace Retrospector.Core.Crud.Interfaces
 {
     public interface ICrudPresenter<T> where T : IModel
     {
-        public void Added(T entity);
-        public void Retrieved(T entity);
-        public void Updated(T entity);
+        public void Added(T model);
+        public void Retrieved(T model);
+        public void Updated(T model);
         public void Deleted(int id);
-        public void RetrievedAll(IEnumerable<T> entities);
-        public void RetrievedAllByMediaId(IEnumerable<T> entities);
+        public void RetrievedAll(IEnumerable<T> models);
+        public void RetrievedByMediaId(IEnumerable<T> models);
     }
 }
