@@ -1,6 +1,8 @@
 # Retrospector-Core
 [![build](https://img.shields.io/travis/NonlinearFruit/Retrospector-Core.svg)](https://travis-ci.org/NonlinearFruit/Retrospector-Core)
 [![coverage](https://img.shields.io/codecov/c/gh/NonlinearFruit/Retrospector-Core.svg)](https://codecov.io/gh/NonlinearFruit/Retrospector-Core)
+[![vulnerabilities](https://snyk.io/test/github/NonlinearFruit/Retrospector-Core/badge.svg)](https://snyk.io/test/github/NonlinearFruit/Retrospector-Core)
+
 
 This is the core business logic of [Retrospector](https://github.com/NonlinearFruit/Retrospector). Reading or writing data, calculating statistics and achievements, and processing search queries happens here!
 
