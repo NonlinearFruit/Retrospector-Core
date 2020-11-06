@@ -3,9 +3,15 @@
     <PropertyGroup>
         <TargetFramework>netcoreapp3.1</TargetFramework>
         <RootNamespace>Retrospector.Core</RootNamespace>
+        <RepositoryUrl>https://github.com/NonlinearFruit/Retrospector-Core</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="MinVer" Version="2.3.1">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
       <PackageReference Include="Optional" Version="4.0.0" />
     </ItemGroup>
 
