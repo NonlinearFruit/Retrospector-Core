@@ -55,7 +55,7 @@ git commit -m "MESSAGE"
 git tag -a 0.1.0 -m "TAG_MESSAGE"
 git push --tags
 dotnet pack --configuration Release
-dotnet nuget push "Retrospector.Core/bin/Release/Retrospector-Core.0.1.0.nupkg" --source "github"
+dotnet nuget push "C:\\Projects\\Retrospector-Core\\Retrospector.Core\\bin\\Release\\Retrospector.Core.0.1.0.nupkg" --source "github"
 ```
 
 source: https://rehansaeed.com/the-easiest-way-to-version-nuget-packages/
