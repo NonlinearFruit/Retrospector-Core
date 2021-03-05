@@ -1,4 +1,3 @@
-using System;
 using System.Linq;
 using Retrospector.Core.Search.Interfaces;
 using Retrospector.Core.Search.Models;
@@ -33,7 +32,7 @@ namespace Retrospector.Core.Search
 
             return _leafOp.Parse(query)
                 .Match(
-                    leaf => new QueryTree {Type = OperatorType.GiveMeEverything, Leaves = new[] {leaf}},
+                    leaf => new QueryTree {Type = OperatorType.And, Leaves = new[] {leaf}},
                     () => GetDefaultLeaves(query)
                 );
         }
@@ -55,14 +54,14 @@ namespace Retrospector.Core.Search
             AddLeaf(root, query);
         }
 
-        private void AddLeaf(QueryTree root, String query)
+        private void AddLeaf(QueryTree root, string query)
         {
             var leaf = _leafOp.Parse(query);
             leaf.MatchNone(() => root.Branches.Add(GetDefaultLeaves(query)));
             leaf.MatchSome(l => root.Leaves.Add(l));
         }
 
-        private QueryTree GetDefaultLeaves(string query)
+        private static QueryTree GetDefaultLeaves(string query)
         {
             var defaultTree = new QueryTree {Type = OperatorType.Or};
             defaultTree.Leaves.Add(new QueryLeaf

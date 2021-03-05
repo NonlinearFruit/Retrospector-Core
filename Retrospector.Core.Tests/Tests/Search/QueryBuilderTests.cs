@@ -174,30 +174,27 @@ namespace Retrospector.Core.Tests.Tests.Search
             }
         }
 
-        private void VerifyTreeHasDepth(QueryTree tree, int depth)
+        private static void VerifyTreeHasDepth(QueryTree tree, int depth)
         {
-            if (depth <= 1)
+            while (depth > 1)
             {
-                Assert.Empty(tree.Branches);
-                return;
+                Assert.NotEmpty(tree.Branches);
+                tree = tree.Branches.First();
+                depth -= 1;
             }
-
-            Assert.NotEmpty(tree.Branches);
-            VerifyTreeHasDepth(tree.Branches.First(), depth - 1);
+            Assert.Empty(tree.Branches);
         }
 
-        private void VerifyEveryBranchIsType(QueryTree tree, OperatorType type)
+        private static void VerifyEveryBranchIsType(QueryTree tree, OperatorType type)
         {
             Assert.Equal(type, tree.Type);
             foreach (var branch in tree.Branches)
                 VerifyEveryBranchIsType(branch, type);
         }
 
-        private int GetLeafCount(QueryTree tree)
-        {
-            return !tree.Branches.Any()
+        private static int GetLeafCount(QueryTree tree)
+            => !tree.Branches.Any()
                 ? tree.Leaves.Count()
                 : tree.Branches.Sum(GetLeafCount);
-        }
     }
 }

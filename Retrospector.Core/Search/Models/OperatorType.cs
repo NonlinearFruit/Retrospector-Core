@@ -5,7 +5,6 @@ namespace Retrospector.Core.Search.Models
         And,
         Or,
         Not,
-        Leaf,
         GiveMeEverything
     }
 }

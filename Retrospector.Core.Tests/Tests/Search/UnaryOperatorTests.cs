@@ -87,7 +87,7 @@ namespace Retrospector.Core.Tests.Tests.Search
         [Fact]
         public void constructor_sets_operator_type()
         {
-            var type = OperatorType.Leaf;
+            var type = OperatorType.Not;
 
             var op = new BinaryOperator(type, _syntaxOp);
 
