@@ -13,7 +13,7 @@ This is the core business logic of [Retrospector](https://github.com/NonlinearFr
         +                                         ^
         |                                         |
         |                                         |
-        |            Retrospector-JavaFx          |
+        |            Retrospector-Maui            |
         |                                         |
         |                                         |
  +-----------------------------------------------------------+
@@ -35,7 +35,7 @@ Request Disseminator+--------------------->Use Case
 +------------------------------------------------------------+
                                             |  |
                                             |  |
-                     Retrospector-Hsqldb    |  |
+                Retrospector-DataStorage    |  |
                                             |  |
                                             |  |
                                             v  +
@@ -53,7 +53,7 @@ Create nuget release:
 ```
 git add -A
 git commit -m "MESSAGE"
-git tag -a 0.1.0 -m "TAG_MESSAGE"
+git tag v0.1.0
 git push --tags
 dotnet pack --configuration Release
 dotnet nuget push "C:\\Projects\\Retrospector-Core\\Retrospector.Core\\bin\\Release\\Retrospector.Core.0.1.0.nupkg" --source "github"
